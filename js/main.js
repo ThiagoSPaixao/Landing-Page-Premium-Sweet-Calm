@@ -538,7 +538,7 @@ class ProductManager {
     
     createWhatsAppFloat() {
         const whatsappFloat = document.createElement('a');
-        whatsappFloat.href = 'https://wa.me/5581992379778?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20velas%20Sweet%20Calm%20por%20R$%2049,90';
+        whatsappFloat.href = 'https://wa.me/5581994396360?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20velas%20Sweet%20Calm%20por%20R$%2049,90';
         whatsappFloat.target = '_blank';
         whatsappFloat.className = 'whatsapp-float';
         whatsappFloat.innerHTML = '💬';
@@ -606,7 +606,7 @@ class ProductManager {
         });
         
         const whatsappLink = document.getElementById('modalWhatsAppLink');
-        const phone = '5581992379778';
+        const phone = '5581994396360';
         const message = encodeURIComponent(product.whatsappMessage);
         whatsappLink.href = `https://wa.me/${phone}?text=${message}`;
         
@@ -699,7 +699,7 @@ class SweetCalmApp {
             
             whatsapp: {
                 open: (message = '') => {
-                    const phone = '5581992379778';
+                    const phone = '5581994396360';
                     const encodedMessage = encodeURIComponent(message || 'Olá! Gostaria de saber mais sobre as velas Sweet Calm por R$ 49,90');
                     window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
                 }
