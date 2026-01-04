@@ -1,4 +1,4 @@
-// main.js - Sweet Calm | Animações e Controle de Vídeo
+// main.js - Sweet Calm | Versão Final
 
 // ============================================
 // 1. CONTROLE DO VÍDEO DO HERO
@@ -17,42 +17,26 @@ class VideoController {
     }
     
     init() {
-        // Adiciona classe de loading
         this.videoContainer.classList.add('loading');
-        
-        // Event listeners do vídeo
         this.setupVideoEvents();
-        
-        // Tenta autoplay
         this.attemptAutoplay();
-        
-        // Verifica visibilidade da página
         this.setupVisibilityHandler();
     }
     
     setupVideoEvents() {
-        // Quando o vídeo começar a tocar
         this.video.addEventListener('playing', () => {
             this.videoContainer.classList.remove('loading');
             this.hasPlayed = true;
-            console.log('🎥 Vídeo iniciado com sucesso');
         });
         
-        // Quando o vídeo terminar de carregar dados
         this.video.addEventListener('loadeddata', () => {
             console.log('🎥 Vídeo carregado');
         });
         
-        // Fallback se o vídeo não carregar
         this.video.addEventListener('error', (e) => {
             console.error('❌ Erro ao carregar vídeo:', e);
             this.videoContainer.classList.remove('loading');
             this.showFallbackImage();
-        });
-        
-        // Quando o vídeo é pausado (usuário scrollou)
-        this.video.addEventListener('pause', () => {
-            console.log('⏸️ Vídeo pausado');
         });
     }
     
@@ -65,11 +49,8 @@ class VideoController {
                     console.log('▶️ Autoplay bem-sucedido');
                 })
                 .catch(error => {
-                    console.log('⚠️ Autoplay bloqueado, criando botão de play');
                     this.videoContainer.classList.remove('loading');
                     this.createPlayButton();
-                    
-                    // Tenta novamente quando o usuário interagir com a página
                     this.setupUserInteractionRetry();
                 });
         }
@@ -83,7 +64,6 @@ class VideoController {
         this.playButton.innerHTML = '<span class="play-icon">▶</span> Acender a chama';
         this.playButton.setAttribute('aria-label', 'Reproduzir vídeo da vela');
         
-        // Estilos via JavaScript (backup)
         this.playButton.style.cssText = `
             position: absolute;
             top: 50%;
@@ -110,14 +90,12 @@ class VideoController {
             justify-content: center;
         `;
         
-        // Ícone do botão
         const iconStyle = document.createElement('style');
         iconStyle.textContent = `
             .play-icon {
                 font-size: 1.2rem;
                 transition: transform 0.3s ease;
             }
-            
             .video-play-btn:hover .play-icon {
                 transform: scale(1.2);
             }
@@ -137,7 +115,6 @@ class VideoController {
         
         this.videoContainer.appendChild(this.playButton);
         
-        // Adiciona teclado accessibility
         this.playButton.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -152,7 +129,6 @@ class VideoController {
         if (playPromise !== undefined) {
             playPromise
                 .then(() => {
-                    console.log('▶️ Vídeo iniciado pelo usuário');
                     if (this.playButton) {
                         this.playButton.style.opacity = '0';
                         this.playButton.style.visibility = 'hidden';
@@ -177,7 +153,6 @@ class VideoController {
                 if (playPromise !== undefined) {
                     playPromise
                         .then(() => {
-                            console.log('▶️ Vídeo iniciado após interação do usuário');
                             this.hasPlayed = true;
                             if (this.playButton) {
                                 this.playButton.style.display = 'none';
@@ -188,14 +163,12 @@ class VideoController {
             }
         };
         
-        // Tenta novamente em várias interações do usuário
         document.addEventListener('click', retryPlay, { once: true });
         document.addEventListener('scroll', retryPlay, { once: true });
         document.addEventListener('touchstart', retryPlay, { once: true });
     }
     
     setupVisibilityHandler() {
-        // Pausa vídeo quando a página não está visível (otimização)
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 if (!this.video.paused) {
@@ -208,7 +181,6 @@ class VideoController {
     }
     
     showFallbackImage() {
-        // Cria um fallback com imagem
         const fallback = document.createElement('div');
         fallback.style.cssText = `
             position: absolute;
@@ -266,18 +238,13 @@ class ScrollAnimator {
     }
     
     init() {
-        // Configura animações iniciais
         this.setupAnimations();
-        
-        // Usa Intersection Observer para melhor performance
         this.setupIntersectionObserver();
         
-        // Fallback para browsers antigos
         if (!('IntersectionObserver' in window)) {
             this.setupScrollFallback();
         }
         
-        // Anima elementos visíveis na carga
         setTimeout(() => this.animateVisibleElements(), 300);
     }
     
@@ -286,18 +253,11 @@ class ScrollAnimator {
             const elements = document.querySelectorAll(section.selector);
             
             elements.forEach((el, index) => {
-                // Reset de transições
                 el.style.transition = '';
-                
-                // Força reflow
                 void el.offsetWidth;
-                
-                // Estado inicial
                 el.style.opacity = '0';
                 el.style.transform = `translateY(${section.yOffset}px)`;
                 el.style.transition = `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * section.delayMultiplier}s`;
-                
-                // Remove classes anteriores
                 el.classList.remove(section.animatedClass, 'animated');
             });
         });
@@ -315,25 +275,20 @@ class ScrollAnimator {
                 if (entry.isIntersecting) {
                     const element = entry.target;
                     
-                    // Encontra qual seção pertence
                     this.animatedSections.forEach(section => {
                         if (element.matches(section.selector)) {
                             element.style.opacity = '1';
                             element.style.transform = 'translateY(0)';
                             element.classList.add(section.animatedClass, 'animated');
-                            
-                            // Remove do observer após animar
                             this.observer.unobserve(element);
                         }
                     });
                 }
             });
             
-            // Verifica se todos foram animados
             this.checkAllAnimated();
         }, options);
         
-        // Observa todos os elementos
         this.animatedSections.forEach(section => {
             document.querySelectorAll(section.selector).forEach(el => {
                 this.observer.observe(el);
@@ -349,7 +304,6 @@ class ScrollAnimator {
     handleScroll() {
         if (!this.isScrolling) {
             this.isScrolling = true;
-            
             requestAnimationFrame(() => {
                 this.animateVisibleElements();
                 this.isScrolling = false;
@@ -361,7 +315,6 @@ class ScrollAnimator {
         if (this.resizeTimeout) {
             clearTimeout(this.resizeTimeout);
         }
-        
         this.resizeTimeout = setTimeout(() => {
             this.animateVisibleElements();
         }, 250);
@@ -395,7 +348,6 @@ class ScrollAnimator {
         
         if (allDone) {
             this.allAnimated = true;
-            console.log('🎉 Todas as animações foram concluídas!');
         }
     }
     
@@ -416,11 +368,9 @@ class ScrollAnimator {
         
         if (animatedElements >= totalElements) {
             this.allAnimated = true;
-            console.log('🎉 Todas as animações foram concluídas!');
         }
     }
     
-    // Métodos públicos
     refresh() {
         this.allAnimated = false;
         this.setupAnimations();
@@ -454,285 +404,241 @@ class ScrollAnimator {
 }
 
 // ============================================
-// 3. OUTRAS INTERAÇÕES E ANIMAÇÕES
+// 3. GERENCIAMENTO DE PRODUTOS
 // ============================================
 
-class UIInteractions {
+class ProductManager {
     constructor() {
-        this.init();
-    }
-    
-    init() {
-        // Smooth scroll para links âncora
-        this.setupSmoothScroll();
-        
-        // Efeito de digitação no hero (opcional)
-        this.setupTypewriterEffect();
-        
-        // Contador de produtos (exemplo)
-        this.setupProductCounter();
-        
-        // Hover effects avançados
-        this.setupAdvancedHover();
-        
-        // Parallax sutil no hero
-        this.setupParallax();
-    }
-    
-    setupSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('.hero').offsetHeight * 0.1;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Foco no elemento para acessibilidade
-                    setTimeout(() => {
-                        targetElement.setAttribute('tabindex', '-1');
-                        targetElement.focus();
-                        targetElement.removeAttribute('tabindex');
-                    }, 1000);
-                }
-            });
-        });
-    }
-    
-    setupTypewriterEffect() {
-        const heroTitle = document.querySelector('.hero h1');
-        if (!heroTitle) return;
-        
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        heroTitle.style.opacity = '1';
-        
-        // Só ativa em desktop para performance
-        if (window.innerWidth > 768) {
-            let i = 0;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    heroTitle.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            };
-            
-            // Espera o vídeo carregar
-            setTimeout(typeWriter, 1000);
-        } else {
-            heroTitle.textContent = text;
-        }
-    }
-    
-    setupProductCounter() {
-        const ctaSection = document.querySelector('.cta');
-        if (!ctaSection) return;
-        
-        // Exemplo: "Apenas 12 unidades restantes"
-        const counterText = document.createElement('div');
-        counterText.className = 'product-counter';
-        counterText.innerHTML = '✨ <span class="counter-number">12</span> unidades restantes neste lote';
-        counterText.style.cssText = `
-            margin-top: 20px;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            animation: pulse 2s infinite;
-        `;
-        
-        ctaSection.querySelector('.container').appendChild(counterText);
-        
-        // Contador decrescente (exemplo)
-        setTimeout(() => {
-            const counterNumber = counterText.querySelector('.counter-number');
-            if (counterNumber) {
-                let count = 12;
-                const interval = setInterval(() => {
-                    if (count > 8) {
-                        count--;
-                        counterNumber.textContent = count;
-                        counterNumber.style.transform = 'scale(1.2)';
-                        setTimeout(() => {
-                            counterNumber.style.transform = 'scale(1)';
-                        }, 300);
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 30000); // A cada 30 segundos
-            }
-        }, 5000);
-    }
-    
-    setupAdvancedHover() {
-        // Efeito de brilho nos cards
-        document.querySelectorAll('.card, .benefit, .product').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-            
-            // Adiciona estilo CSS dinâmico
-            const style = document.createElement('style');
-            style.textContent = `
-                .card:hover::before, .benefit:hover::before, .product:hover::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: radial-gradient(
-                        600px circle at var(--mouse-x) var(--mouse-y),
-                        rgba(200, 162, 77, 0.1),
-                        transparent 40%
-                    );
-                    border-radius: inherit;
-                    z-index: 0;
-                    pointer-events: none;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-    }
-    
-    setupParallax() {
-        const hero = document.querySelector('.hero');
-        if (!hero) return;
-        
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            if (hero && rate < 0) {
-                hero.style.transform = `translateY(${rate}px)`;
-            }
-        });
-    }
-}
-
-// ============================================
-// 4. PERFORMANCE E OTIMIZAÇÕES
-// ============================================
-
-class PerformanceOptimizer {
-    constructor() {
-        this.init();
-    }
-    
-    init() {
-        // Prefetch de recursos
-        this.setupResourcePrefetch();
-        
-        // Lazy loading para imagens futuras
-        this.setupLazyLoading();
-        
-        // Otimizações de scroll
-        this.optimizeScroll();
-        
-        // Monitora performance
-        this.setupPerformanceMonitoring();
-    }
-    
-    setupResourcePrefetch() {
-        // Prefetch das próximas imagens que podem ser usadas
-        const links = [
-            'img/hero-desktop.jpg',
-            'img/hero-mobile.jpg'
-        ];
-        
-        links.forEach(href => {
-            const link = document.createElement('link');
-            link.rel = 'prefetch';
-            link.href = href;
-            document.head.appendChild(link);
-        });
-    }
-    
-    setupLazyLoading() {
-        // Para futuras imagens que possam ser adicionadas
-        if ('IntersectionObserver' in window) {
-            const lazyImageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        lazyImageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            document.querySelectorAll('img.lazy').forEach(img => {
-                lazyImageObserver.observe(img);
-            });
-        }
-    }
-    
-    optimizeScroll() {
-        // Usa requestAnimationFrame para animações suaves
-        let ticking = false;
-        
-        const onScroll = () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    // Atualizações que dependem do scroll
-                    ticking = false;
-                });
-                ticking = true;
+        this.products = {
+            bamboo: {
+                title: 'Bamboo Calm',
+                description: 'Frescor e equilíbrio para momentos de serenidade. Esta vela combina notas verdes de bambu com toques sutis de capim-limão, criando uma atmosfera revigorante e harmoniosa que conecta você com a natureza.',
+                image: 'img/bamboo-calm.jpg',
+                price: 'R$ 49,90',
+                oldPrice: 'R$ 59,90',
+                features: ['🌿 Notas verdes naturais', '✨ Aroma suave e refrescante', '🕯️ Cera vegetal sustentável', '💚 Ideal para meditação'],
+                whatsappMessage: 'Olá! Tenho interesse na vela Bamboo Calm - R$ 49,90'
+            },
+            lavanda: {
+                title: 'Lavanda Serenity',
+                description: 'Relaxamento profundo para noites tranquilas. O clássico aroma de lavanda combinado com nuances florais suaves, perfeito para momentos de descanso, meditação e renovação das energias.',
+                image: 'img/lavanda-serenity.jpg',
+                price: 'R$ 49,90',
+                oldPrice: 'R$ 59,90',
+                features: ['💜 Acalma a mente e corpo', '✨ Aroma floral suave', '🌙 Ideal para dormir', '🌸 Promove relaxamento'],
+                whatsappMessage: 'Olá! Tenho interesse na vela Lavanda Serenity - R$ 49,90'
+            },
+            cereja: {
+                title: 'Cereja & Avelã',
+                description: 'Doce e aconchegante para momentos especiais. A combinação perfeita entre a doçura da cereja e o toque cremoso da avelã, criando um ambiente acolhedor e memorável.',
+                image: 'img/cereja-avela.jpg',
+                price: 'R$ 49,90',
+                oldPrice: 'R$ 59,90',
+                features: ['🍒 Doce e suave', '✨ Aroma aconchegante', '🏠 Conforto do lar', '❤️ Ideal para presentear'],
+                whatsappMessage: 'Olá! Tenho interesse na vela Cereja & Avelã - R$ 49,90'
             }
         };
         
-        window.addEventListener('scroll', onScroll, { passive: true });
+        this.modal = null;
+        this.init();
     }
     
-    setupPerformanceMonitoring() {
-        // Log de performance básico
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                if (window.performance) {
-                    const perfData = window.performance.timing;
-                    const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-                    console.log(`🚀 Página carregada em ${loadTime}ms`);
-                    
-                    // Envia métricas se estiver muito lento
-                    if (loadTime > 3000) {
-                        console.warn('⚠️ Tempo de carregamento acima de 3 segundos');
-                    }
-                }
-            }, 0);
+    init() {
+        this.setupModal();
+        this.setupEventListeners();
+        this.setupImageLoading();
+        this.createWhatsAppFloat();
+    }
+    
+    setupModal() {
+        if (!document.getElementById('productModal')) {
+            const modalHTML = `
+                <div class="product-modal" id="productModal">
+                    <div class="modal-content">
+                        <button class="modal-close">&times;</button>
+                        <div class="modal-body">
+                            <div class="modal-image">
+                                <img id="modalProductImage" src="" alt="">
+                            </div>
+                            <div class="modal-info">
+                                <h3 id="modalProductTitle"></h3>
+                                <p id="modalProductDescription"></p>
+                                <div class="modal-price">
+                                    <span id="modalProductPrice"></span>
+                                    <span id="modalProductOldPrice"></span>
+                                </div>
+                                <div class="modal-features" id="modalProductFeatures"></div>
+                                <div class="modal-buttons">
+                                    <a href="#" target="_blank" class="btn primary modal-whatsapp" id="modalWhatsAppLink">
+                                        💬 Falar no WhatsApp
+                                    </a>
+                                    <button class="btn outline modal-close-btn">Voltar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+        
+        this.modal = document.getElementById('productModal');
+        this.setupModalEvents();
+    }
+    
+    setupModalEvents() {
+        this.modal.querySelector('.modal-close').addEventListener('click', () => {
+            this.closeModal();
         });
+        
+        this.modal.querySelector('.modal-close-btn').addEventListener('click', () => {
+            this.closeModal();
+        });
+        
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    setupEventListeners() {
+        document.querySelectorAll('.product-view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productId = e.currentTarget.dataset.product;
+                this.openProductModal(productId);
+            });
+        });
+    }
+    
+    setupImageLoading() {
+        const images = document.querySelectorAll('.product-image img');
+        
+        images.forEach(img => {
+            const container = img.parentElement;
+            container.classList.add('shimmer');
+            
+            img.addEventListener('load', () => {
+                container.classList.remove('shimmer');
+            });
+            
+            img.addEventListener('error', () => {
+                container.classList.remove('shimmer');
+                img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%23f7f5f2"/><text x="200" y="200" font-family="Arial" font-size="24" fill="%23666" text-anchor="middle" dominant-baseline="middle">🕯️ Vela Aromática</text></svg>';
+            });
+        });
+    }
+    
+    createWhatsAppFloat() {
+        const whatsappFloat = document.createElement('a');
+        whatsappFloat.href = 'https://wa.me/5581992379778?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20velas%20Sweet%20Calm%20por%20R$%2049,90';
+        whatsappFloat.target = '_blank';
+        whatsappFloat.className = 'whatsapp-float';
+        whatsappFloat.innerHTML = '💬';
+        whatsappFloat.setAttribute('aria-label', 'Falar no WhatsApp');
+        
+        document.body.appendChild(whatsappFloat);
+        
+        whatsappFloat.addEventListener('mouseenter', () => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'whatsapp-tooltip';
+            tooltip.textContent = 'Falar no WhatsApp';
+            tooltip.style.cssText = `
+                position: absolute;
+                right: 70px;
+                background: #333;
+                color: white;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                white-space: nowrap;
+            `;
+            whatsappFloat.appendChild(tooltip);
+            
+            const arrow = document.createElement('div');
+            arrow.style.cssText = `
+                position: absolute;
+                right: -6px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0;
+                height: 0;
+                border-top: 6px solid transparent;
+                border-bottom: 6px solid transparent;
+                border-left: 6px solid #333;
+            `;
+            tooltip.appendChild(arrow);
+        });
+        
+        whatsappFloat.addEventListener('mouseleave', () => {
+            const tooltip = whatsappFloat.querySelector('.whatsapp-tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        });
+    }
+    
+    openProductModal(productId) {
+        const product = this.products[productId];
+        if (!product) return;
+        
+        document.getElementById('modalProductImage').src = product.image;
+        document.getElementById('modalProductImage').alt = product.title;
+        document.getElementById('modalProductTitle').textContent = product.title;
+        document.getElementById('modalProductDescription').textContent = product.description;
+        document.getElementById('modalProductPrice').textContent = product.price;
+        document.getElementById('modalProductOldPrice').textContent = product.oldPrice;
+        
+        const featuresContainer = document.getElementById('modalProductFeatures');
+        featuresContainer.innerHTML = '';
+        product.features.forEach(feature => {
+            const span = document.createElement('span');
+            span.className = 'feature';
+            span.textContent = feature;
+            featuresContainer.appendChild(span);
+        });
+        
+        const whatsappLink = document.getElementById('modalWhatsAppLink');
+        const phone = '5581992379778';
+        const message = encodeURIComponent(product.whatsappMessage);
+        whatsappLink.href = `https://wa.me/${phone}?text=${message}`;
+        
+        this.currentProduct = product;
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            this.modal.querySelector('.modal-close').focus();
+        }, 100);
+    }
+    
+    closeModal() {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 
 // ============================================
-// 5. INICIALIZAÇÃO DA APLICAÇÃO
+// 4. INICIALIZAÇÃO DA APLICAÇÃO
 // ============================================
 
 class SweetCalmApp {
     constructor() {
         this.videoController = null;
         this.scrollAnimator = null;
-        this.uiInteractions = null;
-        this.performanceOptimizer = null;
+        this.productManager = null;
         
         this.init();
     }
     
     init() {
-        // Espera o DOM estar pronto
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.setup());
         } else {
@@ -743,16 +649,11 @@ class SweetCalmApp {
     setup() {
         console.log('🕯️ Sweet Calm - Inicializando...');
         
-        // Inicializa módulos
         this.videoController = new VideoController();
         this.scrollAnimator = new ScrollAnimator();
-        this.uiInteractions = new UIInteractions();
-        this.performanceOptimizer = new PerformanceOptimizer();
+        this.productManager = new ProductManager();
         
-        // Configura API pública
         this.setupPublicAPI();
-        
-        // Adiciona classe de carregamento completo
         document.body.classList.add('loaded');
         
         console.log('✅ Sweet Calm - Inicialização completa!');
@@ -760,7 +661,6 @@ class SweetCalmApp {
     
     setupPublicAPI() {
         window.sweetCalm = {
-            // Controle de animações
             animations: {
                 refresh: () => this.scrollAnimator.refresh(),
                 reset: () => this.scrollAnimator.reset(),
@@ -787,40 +687,38 @@ class SweetCalmApp {
                 }
             },
             
-            // Controle de vídeo
             video: {
                 play: () => this.videoController.playVideo(),
-                pause: () => this.videoController.video.pause(),
-                restart: () => {
-                    this.videoController.video.currentTime = 0;
-                    this.videoController.video.play();
+                pause: () => this.videoController.video.pause()
+            },
+            
+            products: {
+                open: (productId) => this.productManager.openProductModal(productId),
+                close: () => this.productManager.closeModal()
+            },
+            
+            whatsapp: {
+                open: (message = '') => {
+                    const phone = '5581992379778';
+                    const encodedMessage = encodeURIComponent(message || 'Olá! Gostaria de saber mais sobre as velas Sweet Calm por R$ 49,90');
+                    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
                 }
             },
             
-            // Utilitários
             scrollTo: (selector) => {
                 const element = document.querySelector(selector);
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
-            },
-            
-            // Debug
-            debug: () => {
-                console.log('🔍 Sweet Calm Debug Info:');
-                console.log('- Video playing:', !this.videoController.video.paused);
-                console.log('- Animations:', window.sweetCalm.animations.status());
-                console.log('- Viewport:', `${window.innerWidth}x${window.innerHeight}`);
             }
         };
     }
 }
 
 // ============================================
-// 6. POLYFILLS E COMPATIBILIDADE
+// 5. POLYFILLS E COMPATIBILIDADE
 // ============================================
 
-// Polyfill para requestAnimationFrame
 (function() {
     let lastTime = 0;
     const vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -851,44 +749,28 @@ class SweetCalmApp {
     }
 })();
 
-// Polyfill para forEach em NodeList (IE)
 if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
 // ============================================
-// 7. INICIALIZAÇÃO FINAL
+// 6. INICIALIZAÇÃO FINAL
 // ============================================
 
-// Previne múltiplas inicializações
 if (!window.sweetCalmApp) {
     window.sweetCalmApp = new SweetCalmApp();
 }
 
-// Exporta para uso em módulos (se necessário)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        VideoController,
-        ScrollAnimator,
-        UIInteractions,
-        PerformanceOptimizer,
-        SweetCalmApp
-    };
-}
-
-// Adiciona classe ao body quando o JS estiver carregado
 document.body.classList.add('js-enabled');
 
-// Remove estilo de no-js se existir
 const noJS = document.querySelector('.no-js');
 if (noJS) {
     noJS.classList.remove('no-js');
 }
 
-// Log de boas-vindas
 console.log(`
 ╔══════════════════════════════════════╗
-║        🕯️ Sweet Calm 🕯️         ║
-║   Velas Aromáticas Artesanais    ║
+║           🕯️ Sweet Calm 🕯️          ║
+║       Velas Aromáticas Artesanais    ║
 ╚══════════════════════════════════════╝
 `);

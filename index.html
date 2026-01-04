@@ -74,21 +74,117 @@
 <section id="fragancias" class="products">
     <div class="container">
         <h2>Fragâncias exclusivas</h2>
+        <p class="section-subtitle">Cada aroma é cuidadosamente criado para transformar seu momento</p>
         <div class="grid">
             <div class="product">
-                <img src="img/fragrancias/bamboo.jpg" alt="Vela aromática Bamboo Calm">
-                <h3>Bamboo Calm</h3>
-                <p>Frescor e equilívrio.</p>
+                <div class="product-image">
+                    <img src="img/bamboo-calm.jpg" alt="Vela Bamboo Calm - Frescor e equilíbrio" loading="lazy">
+                    <div class="product-overlay">
+                        <button class="product-view-btn" data-product="bamboo">
+                            <span>👁️ Ver mais</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3>Bamboo Calm</h3>
+                    <p class="product-description">Frescor e equilíbrio para momentos de serenidade</p>
+                    <div class="product-price">
+                        <span class="price">R$ 49,90</span>
+                        <span class="old-price">R$ 59,90</span>
+                    </div>
+                    <div class="product-features">
+                        <span class="feature">🌿 Notas verdes</span>
+                        <span class="feature">✨ Aroma suave</span>
+                    </div>
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Bamboo%20Calm%20-%20R$%2049,90" 
+                        target="_blank" 
+                        class="product-whatsapp">
+                        💬 Falar no WhatsApp
+                    </a>
+                </div>
             </div>
+
             <div class="product">
-                <img src="img/fragrancias/lavanda.jpg" alt="Vela aromática Lavanda Serenity">
-                <h3>Lavanda Serenity</h3>
-                <p>Relaxamento profundo.</p>
+                <div class="product-image">
+                    <img src="img/lavanda-serenity.jpg" alt="Vela Lavanda Serenity - Relaxamento profundo" loading="lazy">
+                    <div class="product-overlay">
+                        <button class="product-view-btn" data-product="lavanda">
+                            <span>👁️ Ver mais</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3>Lavanda Serenity</h3>
+                    <p class="product-description">Relaxamento profundo para noites tranquilas</p>
+                    <div class="product-price">
+                        <span class="price">R$ 49,90</span>
+                        <span class="old-price">R$ 59,90</span>
+                    </div>
+                    <div class="product-features">
+                        <span class="feature">💜 Acalma a mente</span>
+                        <span class="feature">✨ Aroma floral</span>
+                    </div>
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Lavanda%20Serenity%20-%20R$%2049,90" 
+                        target="_blank" 
+                        class="product-whatsapp">
+                        💬 Falar no WhatsApp
+                    </a>
+                </div>
             </div>
+
             <div class="product">
-                <img src="img/fragrancias/cerejaeavela.jpg" alt="Vela aromática Cereja e Avelã">
-                <h3>Cereja e Avelã</h3>
-                <p>Aconchego, doçura e conforto.</p>
+                <div class="product-image">
+                    <img src="img/cereja-avela.jpg" alt="Vela Cereja & Avelã - Doce e aconchegante" loading="lazy">
+                    <div class="product-overlay">
+                        <button class="product-view-btn" data-product="cereja">
+                            <span>👁️ Ver mais</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3>Cereja & Avelã</h3>
+                    <p class="product-description">Doce e aconchegante para momentos especiais</p>
+                    <div class="product-price">
+                        <span class="price">R$ 49,90</span>
+                        <span class="old-price">R$ 59,90</span>
+                    </div>
+                    <div class="product-features">
+                        <span class="feature">🍒 Doce e suave</span>
+                        <span class="feature">✨ Aroma aconchegante</span>
+                    </div>
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Cereja%20%26%20Avelã%20-%20R$%2049,90" 
+                        target="_blank" 
+                        class="product-whatsapp">
+                        💬 Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para detalhes do produto -->
+        <div class="product-modal" id="productModal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-body">
+                    <div class="modal-image">
+                        <img id="modalProductImage" src="" alt="">
+                    </div>
+                    <div class="modal-info">
+                        <h3 id="modalProductTitle"></h3>
+                        <p id="modalProductDescription"></p>
+                        <div class="modal-price">
+                            <span id="modalProductPrice"></span>
+                            <span id="modalProductOldPrice"></span>
+                        </div>
+                        <div class="modal-features" id="modalProductFeatures"></div>
+                        <div class="modal-buttons">
+                            <a href="#" target="_blank" class="btn primary modal-whatsapp" id="modalWhatsAppLink">
+                                💬 Falar no WhatsApp
+                            </a>
+                            <button class="btn outline modal-close-btn">Voltar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

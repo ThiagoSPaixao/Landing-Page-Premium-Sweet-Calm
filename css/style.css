@@ -5,6 +5,7 @@
     --shadow-light: 0 8px 20px rgba(0,0,0,.05);
     --shadow-hover: 0 12px 24px rgba(0,0,0,.08);
     --shadow-strong: 0 15px 30px rgba(0,0,0,.15);
+    --whatsapp: #25D366;
 }
 
 * {
@@ -281,10 +282,6 @@ h1, h2, h3 {
     gap: 10px;
 }
 
-.benefit h3::before {
-    font-size: 1.8rem;
-}
-
 /* ===== PRODUTOS ===== */
 .product {
     text-align: center;
@@ -301,12 +298,6 @@ h1, h2, h3 {
     height: 4px;
     background: linear-gradient(to right, var(--primary), #b89240);
     opacity: 0.7;
-}
-
-.product h3 {
-    color: var(--dark);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
 }
 
 /* ===== BLOCKQUOTES ===== */
@@ -449,6 +440,388 @@ blockquote::after {
     letter-spacing: 0.5px;
 }
 
+/* ===== SEÇÃO DE PRODUTOS ===== */
+.products {
+    background: linear-gradient(to bottom, var(--bg) 0%, #f0ede6 100%);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Layout do produto */
+.product {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Imagem do produto */
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+}
+
+.product:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-view-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.product-view-btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* Conteúdo do produto */
+.product-content {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.product-description {
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+/* Preço dos produtos */
+.product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.old-price {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.feature {
+    background: #f7f5f2;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* Botão WhatsApp nos produtos */
+.product-whatsapp {
+    background: var(--whatsapp);
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.product-whatsapp:hover {
+    background: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* ===== MODAL DE DETALHES ===== */
+.product-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.product-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f7f5f2;
+    color: #333;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.modal-image {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-info h3 {
+    font-size: 2rem;
+    color: var(--dark);
+}
+
+.modal-info p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Preço no modal */
+.modal-price {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.modal-price span:first-child {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.modal-price span:last-child {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.modal-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.modal-features .feature {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.modal-whatsapp {
+    background: var(--whatsapp);
+    border: none;
+}
+
+.modal-whatsapp:hover {
+    background: #1da851;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: 2px solid #ddd;
+    color: #666;
+}
+
+.modal-close-btn:hover {
+    background: #f7f5f2;
+    border-color: #bbb;
+}
+
+/* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--whatsapp);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background: #1da851;
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+}
+
+/* Fallback para imagens que não carregam */
+.product-image img {
+    background: linear-gradient(45deg, #f7f5f2 25%, #edeae3 25%, #edeae3 50%, #f7f5f2 50%, #f7f5f2 75%, #edeae3 75%, #edeae3);
+    background-size: 20px 20px;
+}
+
+/* Efeito de shimmer nas imagens enquanto carregam */
+.product-image.shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 /* ===== ANIMAÇÕES ===== */
 @keyframes fadeInUp {
     from {
@@ -511,6 +884,14 @@ blockquote::after {
     
     .products .grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .modal-buttons {
+        flex-direction: row;
+    }
+    
+    .modal-buttons .btn {
+        flex: 1;
     }
 }
 
@@ -577,6 +958,27 @@ blockquote::after {
     .hero:hover .hero-video video {
         transform: scale(1.05);
     }
+    
+    .product-image {
+        height: 320px;
+    }
+    
+    .product h3 {
+        font-size: 1.5rem;
+    }
+    
+    .price {
+        font-size: 2rem;
+    }
+    
+    .modal-body {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .modal-image {
+        height: auto;
+        max-height: 500px;
+    }
 }
 
 /* GRANDES DESKTOPS */
@@ -612,7 +1014,9 @@ blockquote::after {
     
     .card, .benefit, .product, blockquote,
     .btn, .video-play-btn,
-    .cta .btn.primary::after {
+    .cta .btn.primary::after,
+    .product-whatsapp,
+    .modal-whatsapp {
         transition: none !important;
         animation: none !important;
     }
@@ -624,7 +1028,9 @@ blockquote::after {
 
 /* FOCO VISÍVEL PARA ACESSIBILIDADE */
 .btn:focus-visible,
-.video-play-btn:focus-visible {
+.video-play-btn:focus-visible,
+.product-view-btn:focus-visible,
+.product-whatsapp:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 3px;
     box-shadow: 0 0 0 6px rgba(200, 162, 77, 0.3);
@@ -635,7 +1041,10 @@ blockquote::after {
     .hero-video,
     .video-play-btn,
     .hero-buttons,
-    .btn {
+    .btn,
+    .whatsapp-float,
+    .product-whatsapp,
+    .modal-whatsapp {
         display: none !important;
     }
     
@@ -653,5 +1062,9 @@ blockquote::after {
     .card, .benefit, .product, blockquote {
         box-shadow: none;
         border: 1px solid #ddd;
+    }
+    
+    .product-price .old-price {
+        color: #666;
     }
 }
