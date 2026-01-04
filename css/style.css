@@ -216,3 +216,49 @@ blockquote::before {
         display: none;
     }
 }
+
+/* Animações de entrada suaves */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state para imagens */
+.hero {
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg);
+    z-index: -1;
+}
+
+/* Foco acessível */
+.btn:focus,
+.card:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* Mobile improvements */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .card, .benefit, .product, blockquote {
+        padding: 20px 16px;
+    }
+}
