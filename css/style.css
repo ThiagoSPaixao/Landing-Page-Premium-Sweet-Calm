@@ -1068,3 +1068,253 @@ blockquote::after {
         color: #666;
     }
 }
+
+/* ===== BANNER DE PROMOÇÃO ===== */
+.promo-banner {
+    background: linear-gradient(135deg, #c8a24d 0%, #b89240 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin: 30px auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(200, 162, 77, 0.3);
+    animation: pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.promo-icon {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.promo-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.promo-text strong {
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.promo-badge {
+    background: white;
+    color: #c8a24d;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* ===== BADGE NOS PRODUTOS ===== */
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4757;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ===== PREÇO REORGANIZADO ===== */
+.product-price {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+    background: #f9f7f3;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.price-original {
+    font-size: 0.95rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.price-original .old-price {
+    font-size: 1.1rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.price-current {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+
+.price-current .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===== BANNER INFERIOR ===== */
+.promo-footer {
+    background: #f7f5f2;
+    border: 2px dashed var(--primary);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 40px;
+    text-align: center;
+    color: #666;
+}
+
+.promo-footer p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.promo-footer strong {
+    color: var(--dark);
+}
+
+/* ===== BOTÃO WHATSAPP ATUALIZADO ===== */
+.product-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.product-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ===== ATUALIZAÇÃO DO MODAL ===== */
+.modal-price {
+    background: #f9f7f3;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-price-original {
+    font-size: 1.1rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-price-original span {
+    font-size: 1.3rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.modal-price-current {
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.modal-price-current span {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.modal-badge {
+    background: #ff4757;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .promo-banner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 20px;
+        text-align: center;
+    }
+    
+    .promo-text {
+        font-size: 1rem;
+    }
+    
+    .price-current .price {
+        font-size: 1.8rem;
+    }
+    
+    .product-badge {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+}

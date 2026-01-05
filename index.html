@@ -75,6 +75,14 @@
     <div class="container">
         <h2>Fragâncias exclusivas</h2>
         <p class="section-subtitle">Cada aroma é cuidadosamente criado para transformar seu momento</p>
+        
+        <!-- ADICIONE ESTE BANNER DE PROMOÇÃO -->
+        <div class="promo-banner">
+            <span class="promo-icon">🔥</span>
+            <span class="promo-text">PROMOÇÃO ESPECIAL: <strong>De R$ 59,90 por apenas R$ 49,90</strong></span>
+            <span class="promo-badge">-20%</span>
+        </div>
+        
         <div class="grid">
             <div class="product">
                 <div class="product-image">
@@ -84,22 +92,24 @@
                             <span>👁️ Ver mais</span>
                         </button>
                     </div>
+                    <!-- BADGE DE PROMOÇÃO NA IMAGEM -->
+                    <div class="product-badge">PROMOÇÃO</div>
                 </div>
                 <div class="product-content">
                     <h3>Bamboo Calm</h3>
                     <p class="product-description">Frescor e equilíbrio para momentos de serenidade</p>
                     <div class="product-price">
-                        <span class="price">R$ 49,90</span>
-                        <span class="old-price">R$ 59,90</span>
+                        <div class="price-original">De: <span class="old-price">R$ 59,90</span></div>
+                        <div class="price-current">Por: <span class="price">R$ 49,90</span></div>
                     </div>
                     <div class="product-features">
                         <span class="feature">🌿 Notas verdes</span>
                         <span class="feature">✨ Aroma suave</span>
                     </div>
-                    <a href="https://wa.me/5581994396360?text=Olá!%20Tenho%20interesse%20na%20vela%20Bamboo%20Calm%20-%20R$%2049,90" 
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Bamboo%20Calm%20-%20De%20R$%2059,90%20por%20R$%2049,90" 
                         target="_blank" 
                         class="product-whatsapp">
-                        💬 Falar no WhatsApp
+                        💬 Comprar com desconto
                     </a>
                 </div>
             </div>
@@ -112,22 +122,24 @@
                             <span>👁️ Ver mais</span>
                         </button>
                     </div>
+                    <!-- BADGE DE PROMOÇÃO NA IMAGEM -->
+                    <div class="product-badge">PROMOÇÃO</div>
                 </div>
                 <div class="product-content">
                     <h3>Lavanda Serenity</h3>
                     <p class="product-description">Relaxamento profundo para noites tranquilas</p>
                     <div class="product-price">
-                        <span class="price">R$ 49,90</span>
-                        <span class="old-price">R$ 59,90</span>
+                        <div class="price-original">De: <span class="old-price">R$ 59,90</span></div>
+                        <div class="price-current">Por: <span class="price">R$ 49,90</span></div>
                     </div>
                     <div class="product-features">
                         <span class="feature">💜 Acalma a mente</span>
                         <span class="feature">✨ Aroma floral</span>
                     </div>
-                    <a href="https://wa.me/5581994396360?text=Olá!%20Tenho%20interesse%20na%20vela%20Lavanda%20Serenity%20-%20R$%2049,90" 
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Lavanda%20Serenity%20-%20De%20R$%2059,90%20por%20R$%2049,90" 
                         target="_blank" 
                         class="product-whatsapp">
-                        💬 Falar no WhatsApp
+                        💬 Comprar com desconto
                     </a>
                 </div>
             </div>
@@ -140,53 +152,35 @@
                             <span>👁️ Ver mais</span>
                         </button>
                     </div>
+                    <!-- BADGE DE PROMOÇÃO NA IMAGEM -->
+                    <div class="product-badge">PROMOÇÃO</div>
                 </div>
                 <div class="product-content">
                     <h3>Cereja & Avelã</h3>
                     <p class="product-description">Doce e aconchegante para momentos especiais</p>
                     <div class="product-price">
-                        <span class="price">R$ 49,90</span>
-                        <span class="old-price">R$ 59,90</span>
+                        <div class="price-original">De: <span class="old-price">R$ 59,90</span></div>
+                        <div class="price-current">Por: <span class="price">R$ 49,90</span></div>
                     </div>
                     <div class="product-features">
                         <span class="feature">🍒 Doce e suave</span>
                         <span class="feature">✨ Aroma aconchegante</span>
                     </div>
-                    <a href="https://wa.me/5581994396360?text=Olá!%20Tenho%20interesse%20na%20vela%20Cereja%20%26%20Avelã%20-%20R$%2049,90" 
-                        target="_blank"
+                    <a href="https://wa.me/5581992379778?text=Olá!%20Tenho%20interesse%20na%20vela%20Cereja%20%26%20Avelã%20-%20De%20R$%2059,90%20por%20R$%2049,90" 
+                        target="_blank" 
                         class="product-whatsapp">
-                        💬 Falar no WhatsApp
+                        💬 Comprar com desconto
                     </a>
                 </div>
             </div>
         </div>
         
-        <!-- Modal para detalhes do produto -->
-        <div class="product-modal" id="productModal">
-            <div class="modal-content">
-                <button class="modal-close">&times;</button>
-                <div class="modal-body">
-                    <div class="modal-image">
-                        <img id="modalProductImage" src="" alt="">
-                    </div>
-                    <div class="modal-info">
-                        <h3 id="modalProductTitle"></h3>
-                        <p id="modalProductDescription"></p>
-                        <div class="modal-price">
-                            <span id="modalProductPrice"></span>
-                            <span id="modalProductOldPrice"></span>
-                        </div>
-                        <div class="modal-features" id="modalProductFeatures"></div>
-                        <div class="modal-buttons">
-                            <a href="#" target="_blank" class="btn primary modal-whatsapp" id="modalWhatsAppLink">
-                                💬 Falar no WhatsApp
-                            </a>
-                            <button class="btn outline modal-close-btn">Voltar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- ADICIONE ESTE BANNER INFERIOR -->
+        <div class="promo-footer">
+            <p>⏰ <strong>Oferta por tempo limitado!</strong> Aproveite o desconto de 20% em todas as fragrâncias.</p>
         </div>
+        
+        <!-- Modal permanece igual -->
     </div>
 </section>
 
