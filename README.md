@@ -1,30 +1,41 @@
-# 🕯️ Sweet Calm — Landing Page Oficial
+# 🕯️ Sweet Calm — Landing Page Premium
 
-Landing page oficial da **Sweet Calm**, uma marca real de **velas aromáticas artesanais**, desenvolvida com foco em **conversão**, **experiência do usuário** e **design premium**, utilizando HTML, CSS e JavaScript puros.
+Landing page oficial da **Sweet Calm**, marca real de **velas aromáticas artesanais**, desenvolvida com foco em **experiência do usuário**, **design premium**, **performance** e **conversão**, utilizando **HTML, CSS e JavaScript puros**, sem frameworks.
 
-O projeto foi pensado para apresentar os produtos, destacar os diferenciais da marca e direcionar o cliente para compra via WhatsApp.
+O projeto foi pensado para apresentar os produtos da marca, destacar seus diferenciais e direcionar o cliente para compra via **WhatsApp**, com uma experiência fluida em dispositivos móveis e desktop.
 
 ---
 
 ## ✨ Visão Geral
 
-A Sweet Calm nasceu para transformar momentos simples em **rituais de calma e bem-estar**, oferecendo velas artesanais feitas à mão, com aromas cuidadosamente selecionados.
+A Sweet Calm nasce com a proposta de transformar momentos simples em **rituais de calma e bem-estar**, por meio de velas artesanais feitas à mão, com aromas cuidadosamente selecionados.
 
 Esta landing page tem como objetivos:
 - Fortalecer a presença digital da marca
-- Apresentar as fragrâncias disponíveis
-- Estimular o contato e a conversão
-- Comunicar os valores da marca de forma elegante
+- Apresentar fragrâncias e benefícios
+- Criar uma experiência sensorial e elegante
+- Estimular conversão direta via WhatsApp
+- Comunicar os valores da marca com clareza e sofisticação
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5** — Estrutura semântica e acessível
-- **CSS3** — Design premium, animações suaves e layout responsivo
-- **JavaScript (Vanilla)** — Interações, modais e melhorias de UX
-- **Mobile-First Design**
-- Integração com **WhatsApp** para vendas
+- **HTML5**
+  - Estrutura semântica
+  - Boas práticas de acessibilidade
+
+- **CSS3**
+  - Design premium
+  - Layout responsivo
+  - Animações suaves
+  - Mobile-first
+
+- **JavaScript (Vanilla)**
+  - Código estruturado em classes
+  - Arquitetura modular
+  - Foco em UX, performance e compatibilidade
+  - Sem uso de frameworks
 
 ---
 
@@ -47,15 +58,13 @@ sweet-calm/
 │ ├── lavanda-serenity.jpg
 │ └── cereja-avela.jpg
 └── README.md
-
 ```
----
 
 ---
 
 ## 📱 Responsividade
 
-O site foi desenvolvido com abordagem **mobile-first**, garantindo ótima experiência em:
+O site foi desenvolvido com abordagem **mobile-first**, garantindo excelente experiência em:
 
 - Smartphones
 - Tablets
@@ -64,57 +73,95 @@ O site foi desenvolvido com abordagem **mobile-first**, garantindo ótima experi
 Inclui:
 - Media queries bem definidas
 - Tipografia adaptável
-- Imagens responsivas
-- Experiência otimizada para toque
+- Layout fluido
+- Componentes otimizados para toque
 
 ---
 
 ## 🕯️ Fragrâncias Apresentadas
 
-- **Bamboo Calm** — Frescor e equilíbrio  
-- **Lavanda Serenity** — Relaxamento profundo  
-- **Cereja & Avelã** — Doce e aconchegante  
+- **Bamboo Calm**  
+  Frescor e equilíbrio, com notas verdes naturais.
+
+- **Lavanda Serenity**  
+  Relaxamento profundo, ideal para descanso e noites tranquilas.
+
+- **Cereja & Avelã**  
+  Aroma doce e aconchegante, perfeito para presentear e criar ambientes acolhedores.
 
 Cada fragrância possui:
 - Imagem dedicada
 - Descrição personalizada
-- Destaque de promoção
-- Botão direto para compra via WhatsApp
+- Destaque de preço promocional
+- Botão direto para contato via WhatsApp
 
 ---
 
-## 🎯 Funcionalidades
+## ⚙️ Funcionalidades em JavaScript
 
-- Hero section com vídeo de fundo
-- Seções de benefícios e storytelling da marca
-- Cards de produtos com hover e animações
-- Banner de promoção com destaque visual
-- Botões de compra integrados ao WhatsApp
-- Modal de visualização detalhada (JS)
-- Foco em performance e acessibilidade
+### 🎥 Controle Avançado de Vídeo (Hero)
+- Tentativa de autoplay com fallback
+- Botão customizado caso o autoplay seja bloqueado
+- Tratamento de visibilidade da aba
+- Fallback visual para erro de carregamento
+- Acessibilidade via teclado e ARIA
 
----
+### ✨ Animações com Scroll (Stagger Effect)
+- IntersectionObserver
+- Fallback para navegadores antigos
+- Animações suaves e escalonadas
+- Controle de estado para evitar reprocessamento
+- API pública para refresh e reset
+
+### 🛍️ Gerenciamento de Produtos
+- Dados centralizados em objeto JS
+- Modal dinâmico com:
+  - Imagem
+  - Descrição
+  - Preço e preço antigo
+  - Lista de benefícios
+- Integração dinâmica com WhatsApp
+- Fechamento por clique externo e tecla ESC
+
+### 💬 WhatsApp Flutuante
+- Botão flutuante persistente
+- Mensagem pré-preenchida
+- Tooltip informativo
+
+### 🧠 Arquitetura
+- Código organizado em classes:
+  - `VideoController`
+  - `ScrollAnimator`
+  - `ProductManager`
+  - `SweetCalmApp`
+- Inicialização centralizada
+- API pública para debug e extensões futuras
+
+
 
 ## 🚀 Como Executar o Projeto
 
 1. Clone o repositório:
-   ```bash
+   bash
    git clone https://github.com/seu-usuario/sweet-calm.git
 
 Abra o arquivo index.html no navegador
 (não é necessário servidor ou dependências)
+
 ---
 
 📌 Status do Projeto
 
-✅ Projeto finalizado
+✅ Projeto finalizado — versão premium
 🚀 Em uso pela marca Sweet Calm
+
 ---
 
 👨‍💻 Desenvolvimento
 
 Desenvolvido por Thiago
-Projeto criado para atender uma empresa real, com foco comercial e profissional.
+Projeto criado para atender uma empresa real, com foco comercial, técnico e profissional.
+
 ---
 
 © 2025 Sweet Calm — Velas Aromáticas Artesanais
