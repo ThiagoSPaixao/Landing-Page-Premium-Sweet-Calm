@@ -79,15 +79,15 @@ Abra o arquivo index.html no navegador
 
 🎯 Objetivo do Projeto
 
-Demonstrar habilidades em:
+- Demonstrar habilidades em:
 
-Criação de landing pages profissionais
+- Criação de landing pages profissionais
 
-Organização de código
+- Organização de código
 
-Design orientado à conversão
+- Design orientado à conversão
 
-Desenvolvimento front-end moderno
+- Desenvolvimento front-end moderno
 
 📌 Status do Projeto
 
