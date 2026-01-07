@@ -6,6 +6,16 @@ O projeto foi pensado para apresentar os produtos da marca, destacar seus difere
 
 ---
 
+## 🌐 Site em Produção
+
+A landing page está atualmente publicada e em uso pela marca, com domínio próprio:
+
+👉 **https://www.sweetcalm.com.br**
+
+Este repositório contém o código **front-end público** utilizado para a apresentação institucional e comercial da Sweet Calm.
+
+---
+
 ## ✨ Visão Geral
 
 A Sweet Calm nasce com a proposta de transformar momentos simples em **rituais de calma e bem-estar**, por meio de velas artesanais feitas à mão, com aromas cuidadosamente selecionados.
@@ -114,7 +124,7 @@ Cada fragrância possui:
 - API pública para refresh e reset
 
 ### 🛍️ Gerenciamento de Produtos
-- Dados centralizados em objeto JS
+- Dados centralizados em objeto JavaScript
 - Modal dinâmico com:
   - Imagem
   - Descrição
@@ -137,15 +147,15 @@ Cada fragrância possui:
 - Inicialização centralizada
 - API pública para debug e extensões futuras
 
+---
 
-
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar o Projeto Localmente
 
 1. Clone o repositório:
-   bash
+   ```bash
    git clone https://github.com/seu-usuario/sweet-calm.git
 
-Abra o arquivo index.html no navegador
+2. Abra o arquivo index.html no navegador
 (não é necessário servidor ou dependências)
 
 ---
@@ -153,7 +163,7 @@ Abra o arquivo index.html no navegador
 📌 Status do Projeto
 
 ✅ Projeto finalizado — versão premium
-🚀 Em uso pela marca Sweet Calm
+🚀 Com domínio próprio
 
 ---
 
@@ -161,6 +171,11 @@ Abra o arquivo index.html no navegador
 
 Desenvolvido por Thiago
 Projeto criado para atender uma empresa real, com foco comercial, técnico e profissional.
+
+---
+
+<bloquote>Nota: Este repositório contém apenas código front-end público.
+Nenhuma informação sensível ou credencial é exposta.
 
 ---
 
