@@ -76,6 +76,7 @@ Cada fragrância possui imagem dedicada e descrição personalizada.
 
 Abra o arquivo index.html no navegador
 (não é necessário servidor ou dependências)
+---
 
 🎯 Objetivo do Projeto
 
@@ -88,12 +89,15 @@ Abra o arquivo index.html no navegador
 - Design orientado à conversão
 
 - Desenvolvimento front-end moderno
+---
 
 📌 Status do Projeto
 
 ✅ Projeto finalizado — Versão Premium
+---
 
 👨‍💻 Autor
 
 Desenvolvido por Thiago
 Projeto criado para fins de estudo, portfólio e demonstração técnica.
+
