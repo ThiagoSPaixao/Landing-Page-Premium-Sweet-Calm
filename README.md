@@ -26,7 +26,7 @@ Ideal para:
 ---
 
 ## 📁 Estrutura do Projeto
-
+```
 weet-calm-landing-page/
 │
 ├── index.html
@@ -42,7 +42,7 @@ weet-calm-landing-page/
 │ ├── lavanda.jpg
 │ └── vanilla.jpg
 └── README.md
-
+```
 
 ---
 
